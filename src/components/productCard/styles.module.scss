@@ -1,0 +1,44 @@
+.card1, .card2, .card3 {
+  font-family: Anticva;
+}
+
+.card1 {
+  margin-top: -30px;
+  align-self: start;
+  justify-self: right;
+}
+
+.card2 {
+  margin-top: 40px;
+  align-self: end;
+  justify-self: center;
+}
+
+.card3 {
+  align-self: start;
+  justify-self: left;
+  margin-left: 20px;
+}
+
+.title {
+  font-size: responsive-size(64);
+}
+
+.desc {
+  font-size: responsive-size(32);
+}
+
+.card1img {
+  width: responsive-size(470);
+  height: responsive-size(470);
+}
+
+.card2img {
+  width: responsive-size(405);
+  height: responsive-size(405);
+}
+
+.card3img {
+  width: responsive-size(353);
+  height: responsive-size(353);
+}

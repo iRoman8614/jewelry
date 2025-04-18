@@ -1,5 +1,26 @@
-@import './styles/fonts';
-@import "./styles/utils";
+@font-face {
+  font-family: 'Anticva';
+  src: url('./assets/fonts/Anticva.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jaini';
+  src: url('./assets/fonts/Jaini.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poller';
+  src: url('./assets/fonts/Poller.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 html, body {
   padding: 0;
