@@ -1,0 +1,18 @@
+.svgContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 108px;  // Фиксированная ширина
+  height: 123px; // Фиксированная высота
+  pointer-events: none; // Чтобы не мешал кликам
+  z-index: 500;   // Убедитесь, что это ВЫШЕ ленты, но НИЖЕ попапа (у попапа 1000)
+  // Для отладки можно временно добавить границу:
+  // border: 1px solid red;
+}
+
+.invertingSvgElement {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

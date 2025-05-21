@@ -1,0 +1,22 @@
+// src/components/ProductImageDisplay/styles.module.scss
+.imageDisplayContainer {
+  position: relative; // Важно для абсолютного позиционирования дочерних элементов
+  width: 100%; // Занимает всю ширину родительского .leftPanel
+  overflow: hidden; // Если картинки случайно выйдут за пределы (хотя не должны при правильном расчете left)
+}
+
+.productImage {
+  background-color: #aaaaaa;
+  position: absolute;
+  width: 140px; // Фиксированный размер
+  height: 140px; // Фиксированный размер
+  object-fit: cover; // Как изображение будет вписываться в размеры
+  border: 2px solid white; // Пример рамки, если нужно
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1); // Небольшая тень для объема
+  transition: transform 0.3s ease; // Для возможных будущих анимаций
+
+  &:hover {
+    transform: scale(1.05); // Небольшое увеличение при наведении
+    z-index: 10; // Поднять над другими при наведении
+  }
+}

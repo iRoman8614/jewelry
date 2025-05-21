@@ -1,0 +1,129 @@
+.feedContainer {
+  width: 100%;
+  overflow: hidden; // Обрезаем все, что выходит за пределы
+  box-sizing: border-box;
+  // CSS переменные для удобства (устанавливаются из JS)
+  // --image-width, --image-height, --vertical-offset, --gap
+  // height устанавливается инлайн-стилем из JS
+  // background-color: #f0f0f0; // Для отладки можно добавить фон
+}
+
+.imagesWrapper {
+  display: flex;
+  height: var(--image-height); // Обертка имеет базовую высоту изображений
+  align-items: center; // Центрируем элементы по вертикали до их смещения
+  animation-name: scrollFeed;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: var(--animation-duration); // Устанавливается из JS
+  width: fit-content; // Ширина по содержимому
+}
+
+@keyframes scrollFeed {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(var(--animation-distance)); // Устанавливается из JS
+  }
+}
+
+.imageItemContainer {
+  flex-shrink: 0; // Предотвращаем сжатие элементов
+  box-sizing: border-box;
+  // Контейнер сам по себе не имеет размеров, их задает img
+  // Отступ между элементами задается на img
+}
+
+.imageElement {
+  display: block;
+  width: var(--image-width);
+  height: var(--image-height);
+  object-fit: cover; // Масштабирует изображение для заполнения, обрезая лишнее
+  margin-right: var(--gap); // Задаем промежуток справа от каждого изображения
+  transition: transform 0.3s ease-out; // Плавность для смещения (опционально)
+
+  // .even и .odd теперь должны применяться к imageItemContainer,
+  // чтобы смещать весь блок, а не только картинку внутри (если есть еще что-то)
+  // Если смещаем только img, то можно оставить так:
+  // .imageItemContainer.even & { ... }
+}
+
+// Применяем смещение к .imageItemContainer
+.imageItemContainer {
+  &.even {
+    transform: translateY(calc(-1 * var(--vertical-offset)));
+  }
+  &.odd {
+    transform: translateY(var(--vertical-offset));
+  }
+}
+
+/* ... ваши существующие стили для .feedContainer, .imagesWrapper, .imageItemContainer, .imageElement, .even, .odd ... */
+
+/* Стили для попапа/модального окна */
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Должен быть выше всего, включая инвертирующий SVG */
+  cursor: pointer;
+}
+
+.popupContent {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  cursor: default; /* Возвращаем стандартный курсор для контента */
+  display: flex; // Для выравнивания изображения, если нужно
+  justify-content: center;
+  align-items: center;
+}
+
+.popupImage {
+  display: block;
+  max-width: 100%;
+  max-height: calc(90vh - 80px); /* Учитываем padding и возможную кнопку закрытия */
+  object-fit: contain; // Чтобы изображение поместилось полностью
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+  line-height: 1;
+  padding: 5px;
+
+  &:hover {
+    color: #000;
+  }
+}
+
+/* Добавляем cursor: pointer для элементов ленты, чтобы показать интерактивность */
+.imageItemContainer {
+  /* ... существующие стили ... */
+  cursor: pointer;
+  transition: transform 0.2s ease-out; // Небольшой эффект при наведении
+
+  &:hover {
+    transform: translateY(calc(-1 * var(--vertical-offset))) scale(1.05); // Пример для even
+    &.odd {
+      transform: translateY(var(--vertical-offset)) scale(1.05); // Пример для odd
+    }
+  }
+}

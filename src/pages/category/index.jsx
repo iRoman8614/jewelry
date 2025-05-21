@@ -173,7 +173,11 @@ export const CategoryPage = () => {
                         Products.map((product, index) => {
                             const cardType = cardTypeSequence[index % cardTypeSequence.length];
                             const CardComponent = cardComponents[cardType];
-                            return <CardComponent key={product.id || index} item={product} />;
+                            return (
+                                <Link className={styles.link} to={'/item/1'}>
+                                    <CardComponent key={product.id || index} item={product} />        
+                                </Link>
+                            );
                         })
                     }
                 </div>

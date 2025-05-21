@@ -1,0 +1,24 @@
+.root {
+  height: 80vh;
+  //overflow: hidden;
+  font-family: "Anticva";
+}
+
+.title {
+  font-size: 32px;
+  text-align: center;
+}
+
+.image {
+  filter: invert(1);
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
