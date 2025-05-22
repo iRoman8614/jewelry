@@ -16,6 +16,7 @@ const MOCK_CART_ITEMS = [
 
 export const CartPage = () => {
     const [cartItems, setCartItems] = useState([]);
+    const [showForm, setShowForm] = useState(false)
 
     useEffect(() => {
         setCartItems(MOCK_CART_ITEMS);
@@ -29,6 +30,10 @@ export const CartPage = () => {
         id: item.id,
         imageUrl: item.imageUrl
     }));
+
+    const handleFormShow = (state)=> {
+        setShowForm(state)
+    }
 
     return(
         <>
@@ -61,9 +66,13 @@ export const CartPage = () => {
                     <div>итого</div>
                     <div>sum</div>
                 </div>
-                <div className={styles.button}>Купить</div>
+                <div className={styles.button} onClick={() => handleFormShow(true)}>Купить</div>
             </main>
-            <ConfirmForm />
+            {showForm &&
+                <div className={styles.formContainer}>
+                    <ConfirmForm action={() => handleFormShow(false)}/>
+                </div>
+            }
         </>
     )
 }

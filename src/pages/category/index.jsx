@@ -8,6 +8,7 @@ import next from '../../assets/next.svg'
 import prev from '../../assets/prev.svg'
 import logotipe from '../../assets/logotipe.png'
 import {useLayoutEffect} from "react";
+import meteora from '../../assets/meteora.png'
 
 const categoryData = {
     'rings': {
@@ -31,7 +32,7 @@ const categoryData = {
 
 const Products = [
     {
-        image: '/meteora.png',
+        image: meteora,
         name: 'meteor',
         desc: 'Essentials',
         weight: '',
@@ -40,7 +41,7 @@ const Products = [
         price: '33000'
     },
     {
-        image: '/traffic.png',
+        image: meteora,
         name: 'traffic',
         desc: 'Gemplate',
         weight: '',
@@ -49,7 +50,7 @@ const Products = [
         price: '80000'
     },
     {
-        image: '/meteora.png',
+        image: meteora,
         name: '',
         weight: '',
         size: '',
@@ -57,7 +58,7 @@ const Products = [
         price: ''
     },
     {
-        image: '/meteora.png',
+        image: meteora,
         name: 'meteor',
         desc: 'Essentials',
         weight: '',
@@ -66,7 +67,7 @@ const Products = [
         price: '33000'
     },
     {
-        image: '/traffic.png',
+        image: meteora,
         name: 'traffic',
         desc: '55 gr ',
         weight: '',
@@ -75,7 +76,7 @@ const Products = [
         price: '80000'
     },
     {
-        image: '/meteora.png',
+        image: meteora,
         name: 'meteor',
         desc: 'Essentials',
         weight: '',
@@ -84,7 +85,7 @@ const Products = [
         price: '33000'
     },
     {
-        image: '/traffic.png',
+        image: meteora,
         name: 'traffic',
         desc: 'Gemplate',
         weight: '',
@@ -93,7 +94,7 @@ const Products = [
         price: '80000'
     },
     {
-        image: '/traffic.png',
+        image: meteora,
         name: 'traffic',
         desc: '55 gr ',
         weight: '',
@@ -102,7 +103,7 @@ const Products = [
         price: '80000'
     },
     {
-        image: '/meteora.png',
+        image: meteora,
         name: '',
         weight: '',
         size: '',
@@ -110,7 +111,7 @@ const Products = [
         price: ''
     },
     {
-        image: '/traffic.png',
+        image: meteora,
         name: 'traffic',
         desc: 'Gemplate',
         weight: '',
@@ -119,7 +120,7 @@ const Products = [
         price: '80000'
     },
     {
-        image: '/traffic.png',
+        image: meteora,
         name: 'traffic',
         desc: '55 gr ',
         weight: '',
@@ -128,7 +129,7 @@ const Products = [
         price: '80000'
     },
     {
-        image: '/meteora.png',
+        image: meteora,
         name: '',
         weight: '',
         size: '',
@@ -188,7 +189,7 @@ export const CategoryPage = () => {
                 </div>
                 <div className={styles.pagination}>
                     <img className={styles.arrow} src={prev} alt={''} />
-                    1 / 3
+                    1 / 1
                     <img className={styles.arrow} src={next} alt={''} />
                 </div>
                 <div className={styles.back}>back</div>

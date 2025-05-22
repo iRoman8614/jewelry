@@ -3,11 +3,15 @@ import styles from './styles.module.scss'
 import logoSrc from '../../assets/logo.png';
 import {FormListItem} from "@/components/formListItem/index.jsx";
 import { useForm } from 'react-hook-form';
+import cross from '../../assets/cross.svg';
+import hoverCross from "@/assets/hoverCross.svg";
+import React, {useState} from "react";
 
-export const ConfirmForm = () => {
+export const ConfirmForm = ({action}) => {
     const { register, handleSubmit, formState: { errors } } = useForm({
         mode: "onBlur"
     });
+    const [isHovered, setIsHovered] = useState(false);
 
     const onSubmit = (data) => {
         console.log("Form Data:", data);
@@ -34,6 +38,20 @@ export const ConfirmForm = () => {
 
     return(
         <div className={styles.root}>
+            <div
+                className={styles.buttonContainer}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                role="button"
+                tabIndex={0}
+                onClick={action}
+            >
+                <img
+                    src={isHovered ? hoverCross : cross}
+                    alt="Удалить товар"
+                    className={styles.crossIcon}
+                />
+            </div>
             <img className={styles.logo} src={logoSrc} alt={''} />
             <div className={styles.itemList}>
                 <FormListItem />

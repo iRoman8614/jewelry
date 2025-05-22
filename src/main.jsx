@@ -43,6 +43,10 @@ const router = createHashRouter([
                 element: <GalleryPage />
             },
             {
+                path: "/services",
+                element: <PolicyPage />
+            },
+            {
                 path: "*",
                 element: <NotFound/>
             }
