@@ -52,8 +52,8 @@ export const GalleryPage = () => {
             <InfiniteImageFeed
                 images={productImages}
                 speed={40}
-                imageWidth={220}
-                imageHeight={160}
+                imageWidth={400}
+                imageHeight={400}
                 verticalOffset={30}
                 gap={20}
             />

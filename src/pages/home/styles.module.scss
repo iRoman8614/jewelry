@@ -1,5 +1,76 @@
+@import "../../styles/_utils.scss";
+
 .root {
   font-family: "Anticva";
   background-color: black;
   color: white;
+  position: relative;
+}
+
+.footerContent {
+  display: flex;
+  padding: responsive-size(80) responsive-size(265);
+}
+
+.image, .image2 {
+  width: responsive-size(1375);
+}
+
+.image2 {
+  filter: grayscale(1);
+}
+
+.footerText {
+  width: fit-content;
+  font-size: responsive-size(40);
+  margin: 0 auto;
+  font-family: "Anticva";
+}
+
+.footerLine {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px responsive-size(130);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: responsive-size(128);
+  font-family: "Anticva";
+  font-size: responsive-size(40);
+
+  div {
+    cursor: pointer;
+  }
+}
+
+.msk {
+  align-self: center;
+  font-family: "Anticva";
+  font-size: responsive-size(40);
+}
+
+.logo {
+  background-color: black;
+  width: responsive-size(196);
+  height: responsive-size(196);
+  cursor: pointer;
+}
+
+.powered {
+  font-family: "Anticva";
+  font-size: responsive-size(20);
+  padding: responsive-size(40) responsive-size(80) responsive-size(60) responsive-size(80);
+  text-align: right;
+}
+
+.lightnings {
+  position: absolute;
+  bottom: 3%;
+  display: block;
+  margin: 60px auto;
+  width: responsive-size(1900);
+  left: 50%;
+  transform: translateX(-50%);
 }

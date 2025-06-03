@@ -1,9 +1,107 @@
+//@import "../../styles/_utils.scss";
+//
+//.root {
+//  background-color: #000000;
+//  font-family: "Anticva";
+//  display: flex;
+//  position: relative; // <--- ДОБАВЛЕНО: для контекста позиционирования и z-index
+//  z-index: 100;      // <--- ДОБАВЛЕНО: чтобы панель была выше другого контента
+//  overflow: visible !important; // <--- Усилено: чтобы точно разрешить "вытекание"
+//}
+//
+//.rootWhite {
+//  background-color: #000000; // Будет инвертирован
+//  font-family: "Anticva";
+//  filter: invert(1);
+//  display: flex;
+//  position: relative; // <--- ДОБАВЛЕНО
+//  z-index: 100;      // <--- ДОБАВЛЕНО
+//  overflow: visible !important; // <--- Усилено
+//}
+//
+//.logo {
+//  width: responsive-size(50);
+//  height: auto;
+//  display: block;
+//  filter: invert(1); // Этот filter инвертируется обратно в .rootWhite
+//}
+//
+//.link {
+//  display: block;
+//  color: white; // Будет инвертирован в .rootWhite
+//  text-decoration: none;
+//  font-size: responsive-size(40);
+//  text-transform: uppercase;
+//  padding: responsive-size(5) responsive-size(10);
+//  white-space: nowrap;
+//}
+//
+//.linkList {
+//  position: relative;
+//  display: block;
+//  color: white; // Будет инвертирован в .rootWhite
+//  text-decoration: none;
+//  font-size: responsive-size(40);
+//  text-transform: uppercase;
+//  cursor: pointer;
+//  padding: responsive-size(5) responsive-size(10);
+//
+//  &:hover {
+//    .linkHiden {
+//      display: block;
+//    }
+//  }
+//}
+//
+//.linkHiden {
+//  position: absolute;
+//  top: 100%; // Под родительским элементом .linkList
+//  left: 0;
+//  z-index: 110; // <--- Слегка увеличен z-index (был 10, теперь выше чем у nav 100)
+//  // на самом деле, z-index здесь будет относительно nav,
+//  // поэтому достаточно значения больше 0, чтобы быть над фоном nav.
+//  // Установим 10, чтобы быть уверенными.
+//  display: none;
+//  background-color: #000000; // В .rootWhite станет белым
+//  // border: 1px solid #333; // Можно раскомментировать для отладки границ
+//  // box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+//  padding: responsive-size(5) 0;
+//
+//  .link { // Стили для ссылок внутри выпадающего списка
+//    font-size: responsive-size(35);
+//    padding: responsive-size(8) responsive-size(15);
+//    color: white; // В .rootWhite станет черным
+//    // &:hover {
+//    //   background-color: #1a1a1a; // В .rootWhite станет светло-серым
+//    // }
+//  }
+//}
+//
+//.buttonset {
+//  display: flex;
+//  align-items: center;
+//  gap: responsive-size(57);
+//  padding: responsive-size(15) responsive-size(75) responsive-size(30) responsive-size(75);
+//}
+//
+//.buttonsetAdditional {
+//  width: 100%;
+//  display: flex;
+//  align-items: center;
+//  justify-content: right;
+//  gap: responsive-size(57);
+//  padding: responsive-size(15) responsive-size(75) responsive-size(30) responsive-size(75);
+//}
+
 @import "../../styles/_utils.scss";
 
 .root {
   background-color: #000000;
   font-family: "Anticva";
   display: flex;
+  position: relative;
+  z-index: 100;
+  overflow: visible !important; // Важно, чтобы многоуровневые меню не обрезались
 }
 
 .rootWhite {
@@ -11,6 +109,9 @@
   font-family: "Anticva";
   filter: invert(1);
   display: flex;
+  position: relative;
+  z-index: 100;
+  overflow: visible !important;
 }
 
 .logo {
@@ -26,12 +127,87 @@
   text-decoration: none;
   font-size: responsive-size(40);
   text-transform: uppercase;
+  padding: responsive-size(8) responsive-size(15); // Немного увеличим паддинг для удобства
+  white-space: nowrap; // Предотвращает перенос текста
+  &:hover {
+    // Можно добавить стиль для наведения, если нужно, например:
+    // background-color: rgba(255, 255, 255, 0.1);
+  }
 }
+
+.linkList { // "Доступные"
+  position: relative;
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: responsive-size(40);
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: responsive-size(8) responsive-size(15); // Согласуем паддинги
+
+  &:hover {
+    .linkHiden {
+      display: block;
+    }
+  }
+}
+
+.linkHiden { // Первый уровень выпадающего списка (кольца, браслеты...)
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10; // Должен быть выше фона .linkList, но ниже других элементов на странице, если нужно
+  display: none;
+  background-color: #000000; // Такой же фон, как у навбара
+  // border: 1px solid #333; // Для отладки
+  padding: responsive-size(5) 0;
+  min-width: max-content; // Чтобы ширина подстраивалась под самый длинный элемент
+  overflow: visible; // <--- ВАЖНО: чтобы .collectionsList мог выйти за его пределы
+
+  // Ссылки внутри этого списка (кольца, браслеты...)
+  // уже стилизуются общим .link
+}
+
+.subMenuItem { // Контейнер для элемента первого уровня (напр. "кольца") и его списка коллекций
+  position: relative; // Для позиционирования .collectionsList
+  // .link внутри него уже display: block и имеет нужные стили
+  &:hover {
+    .collectionsList {
+      display: block;
+    }
+    // Можно подсветить сам .link при наведении на .subMenuItem, если ссылка не занимает всю область
+    // > .link {
+    //   background-color: rgba(255, 255, 255, 0.15);
+    // }
+  }
+}
+
+.collectionsList { // Второй уровень выпадающего списка (коллекции)
+  position: absolute;
+  top: 0; // Выравниваем по верху родительского .subMenuItem
+  left: 100%; // Справа от родительского .subMenuItem
+  // margin-left: responsive-size(2); // Небольшой отступ, если нужно
+  z-index: 20; // Выше, чем .linkHiden
+  display: none;
+  background-color: #000000; // Такой же фон
+  // border: 1px solid #444; // Для отладки
+  padding: responsive-size(5) 0;
+  min-width: responsive-size(250); // Или max-content, задаем минимальную ширину для читаемости
+
+  .link { // Ссылки на коллекции
+    font-size: responsive-size(35); // Чуть меньше основного
+    // padding: responsive-size(8) responsive-size(15); // Уже наследуется
+    // &:hover {
+    //   background-color: rgba(255, 255, 255, 0.2);
+    // }
+  }
+}
+
 
 .buttonset {
   display: flex;
   align-items: center;
-  gap: responsive-size(57);
+  gap: responsive-size(20); // Уменьшил немного gap, т.к. у ссылок есть свой padding
   padding: responsive-size(15) responsive-size(75) responsive-size(30) responsive-size(75);
 }
 
@@ -40,6 +216,6 @@
   display: flex;
   align-items: center;
   justify-content: right;
-  gap: responsive-size(57);
+  gap: responsive-size(20);
   padding: responsive-size(15) responsive-size(75) responsive-size(30) responsive-size(75);
 }

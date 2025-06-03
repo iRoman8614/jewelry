@@ -4,6 +4,11 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import ring from '../../assets/ring.png';
+import ring2 from '../../assets/ring2.png';
+import ring3 from '../../assets/ring3.png';
+import ring4 from '../../assets/ring4.png';
+
+const images = [ring2, ring, ring3, ring2, ring4, ring]
 
 const NUMBER_OF_SNAKE_ELEMENTS = 6;
 const INITIAL_POSITION_PATTERN = [2, 1, 2, 3, 2, 1];
@@ -19,7 +24,6 @@ export const categoryData = [
     { id: 'pendants', name: 'Pendants', slug: '/category/pendants', itemImageSrc: '/images/categories/item-ring.png', bgSliceSrc: '/images/categories/bg-slice-4.png' },
 ];
 
-// --- Основной компонент ---
 export const InteractiveCategorySelector = () => {
     const [hoveredCategoryIndex, setHoveredCategoryIndex] = useState(null);
 
@@ -126,12 +130,12 @@ const SnakeRow = ({
                         style={{ transform: `translateY(${translateY}px)` }}
                     >
                         <img
-                            src={ring}
+                            src={images[visualIndex]}
                             alt={category.name}
                             className={styles.foregroundImage}
                         />
                         <img
-                            src={ring}
+                            src={images[visualIndex]}
                             alt=""
                             className={styles.foregroundImageLower}
                             aria-hidden="true"
