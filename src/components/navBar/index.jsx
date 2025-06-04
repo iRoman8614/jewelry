@@ -1,39 +1,7 @@
-// import styles from './styles.module.scss'
-// import { Link } from 'react-router-dom';
-// import logoSrc from '../../assets/logo.png';
-//
-// export const NavBar = ({theme}) => {
-//     return(
-//         <nav className={theme === 'black' ? styles.root : styles.rootWhite}>
-//             <div className={styles.buttonset}>
-//                 <Link className={styles.link} to="/">
-//                     <img className={styles.logo} src={logoSrc} alt={''} />
-//                 </Link>
-//                 <Link className={styles.link} to="/">Путь</Link>
-//                 <div className={styles.linkList}>
-//                     Доступные
-//                     <div className={styles.linkHiden}>
-//                         <Link className={styles.link} to="/category/rings">кольца</Link>
-//                         <Link className={styles.link} to="/category/bracelets">браслеты</Link> {/* Changed path for variety */}
-//                         <Link className={styles.link} to="/category/earrings">серьги</Link>   {/* Changed path for variety */}
-//                         <Link className={styles.link} to="/category/pendants">подвески</Link> {/* Changed path for variety */}
-//                     </div>
-//                 </div>
-//                 <Link className={styles.link} to="/">контакты</Link>
-//                 <Link className={styles.link} to="/">заказ</Link>
-//                 <Link className={styles.link} to="/gallery">галерея</Link>
-//             </div>
-//             <div className={styles.buttonsetAdditional}>
-//                 <Link className={styles.link} to="/cart">корзина</Link>
-//                 <Link className={styles.link} to="/services">сервис</Link>
-//             </div>
-//         </nav>
-//     );
-// }
-
 import styles from './styles.module.scss';
 import { Link } from 'react-router-dom';
 import logoSrc from '../../assets/logo.png';
+import basket from '../../assets/basket.svg'
 
 export const NavBar = ({ theme }) => {
     // Моковые данные для коллекций
@@ -67,7 +35,6 @@ export const NavBar = ({ theme }) => {
                 <div className={styles.linkList}>
                     Доступные
                     <div className={styles.linkHiden}>
-                        {/* Кольца */}
                         <div className={styles.subMenuItem}>
                             <Link className={styles.link} to="/category/rings">кольца</Link>
                             <div className={styles.collectionsList}>
@@ -78,8 +45,6 @@ export const NavBar = ({ theme }) => {
                                 ))}
                             </div>
                         </div>
-
-                        {/* Браслеты */}
                         <div className={styles.subMenuItem}>
                             <Link className={styles.link} to="/category/bracelets">браслеты</Link>
                             <div className={styles.collectionsList}>
@@ -90,8 +55,6 @@ export const NavBar = ({ theme }) => {
                                 ))}
                             </div>
                         </div>
-
-                        {/* Серьги */}
                         <div className={styles.subMenuItem}>
                             <Link className={styles.link} to="/category/earrings">серьги</Link>
                             <div className={styles.collectionsList}>
@@ -102,8 +65,6 @@ export const NavBar = ({ theme }) => {
                                 ))}
                             </div>
                         </div>
-
-                        {/* Подвески */}
                         <div className={styles.subMenuItem}>
                             <Link className={styles.link} to="/category/pendants">подвески</Link>
                             <div className={styles.collectionsList}>
@@ -116,7 +77,9 @@ export const NavBar = ({ theme }) => {
                         </div>
                     </div>
                 </div>
-
+                <div className={styles.categoriesMobile}>
+                    <Link className={styles.link} to="/category/rings">доступные</Link>
+                </div>
                 <Link className={styles.link} to="/">контакты</Link>
                 <a className={styles.link} href="#/#custom">заказ</a>
                 <Link className={styles.link} to="/gallery">галерея</Link>
@@ -124,6 +87,11 @@ export const NavBar = ({ theme }) => {
             <div className={styles.buttonsetAdditional}>
                 <Link className={styles.link} to="/cart">корзина</Link>
                 <Link className={styles.link} to="/services">сервис</Link>
+            </div>
+            <div className={styles.buttonsetAdditionalMobile}>
+                <Link className={styles.link} to="/cart">
+                    <img className={styles.basket} src={basket} alt={''}/>
+                </Link>
             </div>
         </nav>
     );

@@ -1,98 +1,3 @@
-//@import "../../styles/_utils.scss";
-//
-//.root {
-//  background-color: #000000;
-//  font-family: "Anticva";
-//  display: flex;
-//  position: relative; // <--- ДОБАВЛЕНО: для контекста позиционирования и z-index
-//  z-index: 100;      // <--- ДОБАВЛЕНО: чтобы панель была выше другого контента
-//  overflow: visible !important; // <--- Усилено: чтобы точно разрешить "вытекание"
-//}
-//
-//.rootWhite {
-//  background-color: #000000; // Будет инвертирован
-//  font-family: "Anticva";
-//  filter: invert(1);
-//  display: flex;
-//  position: relative; // <--- ДОБАВЛЕНО
-//  z-index: 100;      // <--- ДОБАВЛЕНО
-//  overflow: visible !important; // <--- Усилено
-//}
-//
-//.logo {
-//  width: responsive-size(50);
-//  height: auto;
-//  display: block;
-//  filter: invert(1); // Этот filter инвертируется обратно в .rootWhite
-//}
-//
-//.link {
-//  display: block;
-//  color: white; // Будет инвертирован в .rootWhite
-//  text-decoration: none;
-//  font-size: responsive-size(40);
-//  text-transform: uppercase;
-//  padding: responsive-size(5) responsive-size(10);
-//  white-space: nowrap;
-//}
-//
-//.linkList {
-//  position: relative;
-//  display: block;
-//  color: white; // Будет инвертирован в .rootWhite
-//  text-decoration: none;
-//  font-size: responsive-size(40);
-//  text-transform: uppercase;
-//  cursor: pointer;
-//  padding: responsive-size(5) responsive-size(10);
-//
-//  &:hover {
-//    .linkHiden {
-//      display: block;
-//    }
-//  }
-//}
-//
-//.linkHiden {
-//  position: absolute;
-//  top: 100%; // Под родительским элементом .linkList
-//  left: 0;
-//  z-index: 110; // <--- Слегка увеличен z-index (был 10, теперь выше чем у nav 100)
-//  // на самом деле, z-index здесь будет относительно nav,
-//  // поэтому достаточно значения больше 0, чтобы быть над фоном nav.
-//  // Установим 10, чтобы быть уверенными.
-//  display: none;
-//  background-color: #000000; // В .rootWhite станет белым
-//  // border: 1px solid #333; // Можно раскомментировать для отладки границ
-//  // box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-//  padding: responsive-size(5) 0;
-//
-//  .link { // Стили для ссылок внутри выпадающего списка
-//    font-size: responsive-size(35);
-//    padding: responsive-size(8) responsive-size(15);
-//    color: white; // В .rootWhite станет черным
-//    // &:hover {
-//    //   background-color: #1a1a1a; // В .rootWhite станет светло-серым
-//    // }
-//  }
-//}
-//
-//.buttonset {
-//  display: flex;
-//  align-items: center;
-//  gap: responsive-size(57);
-//  padding: responsive-size(15) responsive-size(75) responsive-size(30) responsive-size(75);
-//}
-//
-//.buttonsetAdditional {
-//  width: 100%;
-//  display: flex;
-//  align-items: center;
-//  justify-content: right;
-//  gap: responsive-size(57);
-//  padding: responsive-size(15) responsive-size(75) responsive-size(30) responsive-size(75);
-//}
-
 @import "../../styles/_utils.scss";
 
 .root {
@@ -101,7 +6,12 @@
   display: flex;
   position: relative;
   z-index: 100;
-  overflow: visible !important; // Важно, чтобы многоуровневые меню не обрезались
+  overflow: visible !important;
+
+  @media screen and (max-width: 768px) {
+    padding: 5px;
+    background-color: #282828;
+  }
 }
 
 .rootWhite {
@@ -112,6 +22,10 @@
   position: relative;
   z-index: 100;
   overflow: visible !important;
+
+  @media screen and (max-width: 768px) {
+    padding: 5px;
+  }
 }
 
 .logo {
@@ -119,6 +33,17 @@
   height: auto;
   display: block;
   filter: invert(1);
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.categoriesMobile {
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
 }
 
 .link {
@@ -132,6 +57,10 @@
   &:hover {
     // Можно добавить стиль для наведения, если нужно, например:
     // background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
   }
 }
 
@@ -149,6 +78,10 @@
     .linkHiden {
       display: block;
     }
+  }
+
+  @media screen and (max-width: 768px) {
+    display: none;
   }
 }
 
@@ -218,4 +151,23 @@
   justify-content: right;
   gap: responsive-size(20);
   padding: responsive-size(15) responsive-size(75) responsive-size(30) responsive-size(75);
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.buttonsetAdditionalMobile {
+  display: none;
+  width: 100%;
+  align-items: center;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+  }
+}
+
+.basket {
+  padding: 1px;
+  height: 14px;
 }
